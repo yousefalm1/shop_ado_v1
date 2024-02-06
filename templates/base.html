@@ -82,7 +82,7 @@
 
               <!-- if grand total is truthy(not empty or zero)it sets the classes text-info and font-weight-bold -->
               <!-- If grand_total is falsy (empty or zero), it sets the class text-black.-->
-              <a href="" class="{% if grand_total %}text-info font-weight-bold{% else %} text-black{% endif %} nav-link">
+              <a href="{% url 'view_bag' %}" class="{% if grand_total %}text-info font-weight-bold{% else %} text-black{% endif %} nav-link">
                 <div class="text-center">
                   <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                   <p class="my-0">
