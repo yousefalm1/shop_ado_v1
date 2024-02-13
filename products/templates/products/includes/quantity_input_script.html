@@ -1,0 +1,70 @@
+<script type="text/javascript">
+    // This function takes an itemId as a parameter.
+    function handleEnableDisable(itemId) {
+        // Gets the current value of the quantity input associated with the item
+        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
+        var minusDisabled = currentValue < 2;
+        var plusDisabled = currentValue > 98;
+
+        // Checks if the decrement button (#decrement-qty_${itemId}) should be disabled (minusDisabled)
+        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+
+        // checks whether the increment button (#increment-qty_${itemId}) should be disabled (plusDisabled) 
+        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
+    }
+
+    // Selects all elements with the class .qty_input and iterates over them.
+    var allQtyInputs = $('.qty_input');
+    for(var i = 0; i < allQtyInputs.length; i++ ){
+        
+        // for each input it retrieves the associated itemId using .data('item_id')
+        var itemId = $(allQtyInputs[i]).data('item_id');
+
+        // It then calls the handleEnableDisable function to enable or disable the decrement and increment buttons based on the current quantity
+        handleEnableDisable(itemId);
+    }
+
+    // Sets up an event listener for the 'change' event on all elements with the class .qty_input
+    $('.qty_input').change(function(){
+        var itemId = $(this).data('item_id');
+
+        // alls the handleEnableDisable function to update the state of the decrement and increment buttons.
+        handleEnableDisable(itemId);
+    })
+
+
+    // Increment Quality
+    // Add event listener  too all elements with class "increment-qty"
+    $('.increment-qty').click(function(e) {
+        // prevents the default behavior of the click event,
+        e.preventDefault();
+
+        // $(this) refers to the button that was clicked.
+        // .closest('.input-group') finds the closest ancestor element with the class input-group
+        // .find('.qty_input') looks for an element with the class qty_input within that ancestor.
+        // [0] extracts the first element from the jQuery object, converting it to a regular DOM element.
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+
+
+        // $(closestInput).val() retrieves the current value of the input field.
+        // parseInt(...) converts the retrieved value to an integer.
+        var currentValue = parseInt($(closestInput).val());
+
+        // currentValue + 1 increments the current value by 1.
+        // $(closestInput).val(...) sets the input field's value to the new incremented value.
+        $(closestInput).val(currentValue + 1);
+        var itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
+    });
+
+    // Decrement Quality 
+    $('.decrement-qty').click(function(e) {
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        var currentValue = parseInt($(closestInput).val());
+        $(closestInput).val(currentValue - 1);
+        var itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
+    })
+</script>
+ 

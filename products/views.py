@@ -61,6 +61,7 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    print(f"Product ID: {product_id}, has_sizes: {product.has_sizes}")
 
     context = {
         'product': product,
