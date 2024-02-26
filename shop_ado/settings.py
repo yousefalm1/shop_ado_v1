@@ -65,7 +65,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'shop_ado.urls'
 
-CRISPY_TEMPLATES_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 TEMPLATES = [
     {
@@ -81,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request', #required by a allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
             ],
             'builtins': [
