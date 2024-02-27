@@ -22,27 +22,16 @@
 }
 
 .stripe-style-input::placeholder {
-  color: #aab7c4;
+    color: #aab7c4;
 }
 
 .fieldset-label {
-  position: relative;
-  right: 0.5rem;
+    position: relative;
+    right: .5rem;
 }
 
 #payment-form .form-control,
 #card-element {
-  color: #000;
-  border: 1px solid #000;
-}
-
-.fieldset-label {
-  position: relative;
-  right: 0.5rem;
-}
-
-#payment-form .form-control,
-#card-element {
-  color: #000;
-  border: 1px solid #000;
+    color: #000;
+    border: 1px solid #000;
 }
